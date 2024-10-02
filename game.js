@@ -40,7 +40,28 @@ function nextSequence() {
 
     gamePattern.push(randomChosenColour);
 
+
 };
+
+function checkAnswer (currentLevel) {
+
+    if (userClickedPattern == gamePattern.lastIndexOf) {
+
+        console.log("Sucess!");
+        console.log(userClickedPattern);
+        console.log(gamePattern);
+
+    } else {
+
+        console.log("Game Over!");
+        console.log(userClickedPattern);
+        console.log(gamePattern);
+
+    }
+
+
+};
+
 
 $(".btn").on("click", function(){
 
@@ -52,9 +73,7 @@ $(".btn").on("click", function(){
 
     userClickedPattern.push(userChosenColour);
     
-    console.log(userClickedPattern);
-    console.log(userChosenColour);
-  
+    checkAnswer(level);
 
 });
 
