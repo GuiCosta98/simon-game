@@ -40,9 +40,9 @@ function nextSequence() {
 
 function checkAnswer() {
   var currentIndex = userClickedPattern.length - 1;
-  // Compara o valor do indice do array do usuário correspondente
-  // ao valor do indice do array do padrão, ao usar a variável indíce, que possuí
-  // o tamanho do indice do array do usuário - 1.
+  // Compara o valor do indice do array do usuário 
+  // ao valor do indice do array do padrão correspondente, ao usar a variável "currentIndex", 
+  // que possuí o tamanho do indice do array do usuário - 1.
   if (userClickedPattern[currentIndex] === gamePattern[currentIndex]) {
     if (userClickedPattern.toString() === gamePattern.toString()) {
       setTimeout(function () {
@@ -55,7 +55,7 @@ function checkAnswer() {
   }
 }
 
-function gameOver(currentLevel) {
+function gameOver() {
   setTimeout(function () {
     $("body").removeClass("game-over");
   }, 200);
@@ -63,19 +63,19 @@ function gameOver(currentLevel) {
   $("body").addClass("game-over");
   setTimeout(200);
   playSound("wrong");
-  userClickedPattern = [];
-  level = 0;
   $("h1").text("Game Over, press any key to restart.");
   startOver();
 }
 
-// arrumar essa função 
 function startOver() {
   pressedKey = true;
 
   $("body").on("keydown", function () {
     if (pressedKey == true) {
+      userClickedPattern = [];
       gamePattern = [];
+      $("h1").text("Level 0");
+      level = 0;
       nextSequence();
       pressedKey = false;
     }
@@ -93,14 +93,7 @@ $(".btn").on("click", function () {
   checkAnswer();
 });
 
-$("body").on("keydown", function () {
-  if (pressedKey == true) {
-    $("h1").text("Level 0");
-    nextSequence();
-
-    pressedKey = false;
-  }
-});
+startOver();
 
 function checkAnswer(currentLevel) {
   var currentIndex = userClickedPattern.length - 1;
